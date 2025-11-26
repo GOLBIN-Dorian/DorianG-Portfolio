@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio - Dorian GOLBIN</title>
+
+  <!-- Meta description pour SEO -->
+  <meta name="description"
+    content="Portfolio de Dorian GOLBIN, étudiant en BTS SIO SLAM, spécialisé en développement web et applications. Découvrez mon parcours, mes compétences, mes projets et ma veille technologique." />
+
+  <!-- Liens externes -->
+  <script src="https://cdn.tailwindcss.com"></script> <!-- Tailwind CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Styles globaux -->
+  <style>
+    body {
+      font-family: 'Karla', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Hero background gradient */
+    .hero-gradient {
+      background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.11), transparent 55%),
+        radial-gradient(circle at top right, rgba(129, 140, 248, 0.16), transparent 55%),
+        radial-gradient(circle at bottom left, rgba(14, 116, 144, 0.2), transparent 60%);
+    }
+
+    .active-section {
+      border-left: 3px solid rgb(96, 165, 250);
+      background: linear-gradient(to right, rgba(37, 99, 235, 0.12), transparent);
+    }
+
+    /* Animation A propos */
+    .section-intro {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding-left: 0.75rem;
+    }
+
+    .section-intro::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 3px;
+      top: 0.15rem;
+      bottom: 0.15rem;
+      border-radius: 999px;
+      background: linear-gradient(to bottom, rgb(129, 140, 248), rgb(56, 189, 248));
+    }
+
+    .section-intro span {
+      border-radius: 999px;
+      padding-inline: 0.75rem;
+      padding-block: 0.1rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+    }
+
+    /* Animation du texte (étudiant / développeur...) */
+    #changing-text {
+      min-width: 150px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    #changing-text span {
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .fade-out {
+      animation: fadeOut 0.35s forwards;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.35s forwards;
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      to {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Style scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #020617;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #1f2937;
+      border-radius: 999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #374151;
+    }
+
+    /* Fix input / textarea */
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(148, 163, 184, 0.9);
+    }
+
+    .input-focus-ring:focus {
+      outline: 2px solid rgba(96, 165, 250, 0.7);
+      outline-offset: 0;
+      box-shadow: 0 0 0 1px rgba(30, 64, 175, 0.8);
+    }
+
+    /* Timeline verticale (parcours / expériences) */
+    .timeline-line {
+      position: absolute;
+      left: 0.5rem;
+      top: 0.4rem;
+      bottom: 0.4rem;
+      width: 2px;
+      background: linear-gradient(to bottom, rgba(96, 165, 250, 0.7), rgba(129, 140, 248, 0.7));
+      opacity: 0.7;
+    }
+
+    .timeline-bullet {
+      box-shadow: 0 0 0 3px rgba(15, 23, 42, 1);
+    }
+
+    @media (max-width: 640px) {
+      .timeline-line {
+        left: 0.4rem;
+      }
+    }
+
+    /* Liens d'ancrage (compétences / projets) */
+    .anchor-link {
+      position: relative;
+      padding-left: 0.75rem;
+    }
+
+    .anchor-link::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background-color: rgba(96, 165, 250, 0.9);
+      transform: translateY(-50%);
+    }
+
+    /* Bouton CV hover */
+    .btn-gradient {
+      background-image: linear-gradient(to right, #3b82f6, #8b5cf6);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-position 0.2s ease;
+      background-size: 200% 100%;
+      background-position: left;
+    }
+
+    .btn-gradient:hover {
+      background-position: right;
+      transform: translateY(-1px);
+      box-shadow: 0 18px 35px rgba(37, 99, 235, 0.32);
+    }
+
+    .btn-outline-glow:hover {
+      box-shadow: 0 15px 30px rgba(15, 23, 42, 0.85);
+      border-color: rgba(148, 163, 184, 0.8);
+    }
+
+    /* Animation légère sur les cartes */
+    .card-hover {
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out, background-color 0.15s ease-out;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+      border-color: rgba(59, 130, 246, 0.35);
+      background-color: rgba(15, 23, 42, 0.9);
+    }
+
+    /* ===== Améliorations responsive globales ===== */
+
+    /* Décalage d'ancre pour le header sticky */
+    main section[id] {
+      scroll-margin-top: 6rem;
+    }
+
+    @media (max-width: 768px) {
+      main section[id] {
+        scroll-margin-top: 5rem;
+      }
+    }
+
+    /* Nav mobile : transition plus fluide */
+    #nav-links {
+      will-change: max-height, opacity, transform;
+    }
+
+    @media (max-width: 767px) {
+      #nav-links {
+        transform-origin: top;
+      }
+    }
+
+    @media (min-width: 768px) {
+      #nav-links {
+        opacity: 1 !important;
+        max-height: none !important;
+        transform: none !important;
+      }
+    }
+
+    /* Animation discrète sur l'icône burger */
+    #menu-toggle i {
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    /* Hero : ajustements de layout */
+    .hero-layout {
+      align-items: center;
+    }
+
+    .hero-text {
+      max-width: 40rem;
+    }
+
+    .hero-actions a {
+      min-width: max-content;
+    }
+
+    .info-badges {
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 480px) {
+      .hero-layout {
+        gap: 2.5rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-actions a {
+        justify-content: center;
+      }
+
+      .info-badges {
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      #contact form {
+        padding: 1.25rem;
+      }
+    }
+
+    /* Petits écrans : resserrer légèrement les espaces verticaux des grilles */
+    @media (max-width: 480px) {
+
+      #parcours .grid,
+      #stages .grid,
+      #experiences .grid,
+      #competences .grid,
+      #projets .grid,
+      #veille .grid {
+        gap: 1.75rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-slate-950 text-gray-100 min-h-screen flex flex-col">
+
+  <!-- Header & navigation -->
+  <header id="accueil" class="sticky top-0 z-30 border-b border-slate-800 bg-slate-950/80 backdrop-blur-xl">
+    <nav class="max-w-6xl mx-auto px-4">
+      <div class="py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+
+        <!-- Logo + bouton burger -->
+        <div class="flex items-center justify-between">
+          <p class="text-2xl font-bold bg-gradient-to-l from-violet-500 to-blue-500 bg-clip-text text-transparent">
+            MonPortfolio
+          </p>
+
+          <!-- Bouton burger (mobile uniquement) -->
+          <button id="menu-toggle"
+            class="md:hidden text-white text-2xl focus:outline-none flex items-center justify-center w-10 h-10 rounded-full bg-slate-900/80 border border-slate-700"
+            aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="nav-links">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+
+        <!-- Liens de navigation -->
+        <div class="md:flex md:items-center md:justify-end">
+          <ul id="nav-links" class="flex flex-col md:flex-row md:items-center gap-2 md:gap-1 mt-2 md:mt-0 text-sm sm:text-[0.9rem]
+                         md:static md:bg-slate-900/70 bg-slate-950/95
+                         md:border border-slate-700 md:rounded-full rounded-2xl
+                         md:px-1.5 md:py-1.5 px-3 pt-3 pb-4
+                         shadow-[0_10px_30px_rgba(15,23,42,0.75)]
+                         transition-all duration-300 ease-out
+                         opacity-0 max-h-0 overflow-hidden md:opacity-100 md:max-h-none">
+            <li>
+              <a href="#accueil2"
+                class="block px-3 py-1.5 rounded-full text-slate-200/90 hover:text-white hover:bg-slate-800/80 transition">
+                Accueil
+              </a>
+            </li>
+            <li>
+              <a href="#parcours"
+                class="block px-3 py-1.5 rounded-full text-slate-200/90 hover:text-white hover:bg-slate-800/80 transition">
+                Parcours
+              </a>
+            </li>
+            <li>
+              <a href="#stages"
+                class="block px-3 py-1.5 rounded-full text-slate-200/90 hover:text-white hover:bg-slate-800/80 transition">
+                Stages
+              </a>
+            </li>
+            <li>
+              <a href="#experiences"
+                class="block px-3 py-1.5 rounded-full text-slate-200/90 hover:text-white hover:bg-slate-800/80 transition">
+                Expériences
+              </a>
+            </li>
+            <li>
+              <a href="#competences"
+                class="block px-3 py-1.5 rounded-full text-slate-200/90 hover:text-white hover:bg-slate-800/80 transition">
+                Compétences
+              </a>
+            </li>
+            <li>
+              <a href="#projets"
+                class="block px-3 py-1.5 rounded-full text-slate-200/90 hover:text-white hover:bg-slate-800/80 transition">
+                Projets
+              </a>
+            </li>
+            <li>
+              <a href="#veille"
+                class="block px-3 py-1.5 rounded-full text-slate-200/90 hover:text-white hover:bg-slate-800/80 transition">
+                Veille
+              </a>
+            </li>
+            <li>
+              <a href="#contact"
+                class="block px-3 py-1.5 rounded-full text-slate-200/90 hover:text-white hover:bg-slate-800/80 transition">
+                Contact
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+
+  <main id="main-content" class="flex-1">
+
+    <!-- HERO -->
+    <section class="max-w-6xl mx-auto px-4 pt-10 md:pt-20" id="accueil2">
+      <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-10 md:gap-16 hero-layout">
+
+        <!-- Texte -->
+        <div class="flex-1 space-y-6 md:space-y-7 hero-text">
+          <div class="section-intro text-[0.65rem] sm:text-xs uppercase tracking-[0.2em] text-blue-200/80">
+            <span
+              class="bg-slate-800/80 border border-slate-600/80 text-[0.63rem] px-3 py-1 rounded-full flex items-center gap-2">
+              <span
+                class="inline-flex w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_12px_rgba(52,211,153,0.9)]"></span>
+              Disponible pour un stage
+            </span>
+            <span class="hidden sm:inline text-slate-300/80">
+              BTS SIO SLAM • Développement web & applications
+            </span>
+          </div>
+
+          <div class="space-y-3 sm:space-y-4">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-50 leading-tight">
+              Bonjour, moi c&apos;est <span class="text-blue-400">Dorian GOLBIN</span>
+            </h1>
+
+            <p class="text-base sm:text-lg md:text-xl text-blue-100 flex items-center gap-3">
+              <span>Je suis</span>
+              <span
+                class="inline-flex items-center px-3 py-1 rounded-full bg-slate-800/80 border border-blue-500/40 text-sm sm:text-base">
+                <span id="changing-text"
+                  class="font-semibold bg-gradient-to-l from-violet-400 to-sky-300 bg-clip-text text-blue-400">
+                  <span>étudiant en BTS SIO SLAM</span>
+                </span>
+                <span id="cursor" class="border-r-2 border-blue-400 ml-1 h-6"></span>
+              </span>
+            </p>
+          </div>
+
+          <p class="text-sm sm:text-base md:text-[0.97rem] text-slate-200 leading-relaxed max-w-xl">
+            Passionné par le développement web et logiciel, je me forme en <span class="font-semibold text-blue-300">BTS
+              Services Informatiques aux Organisations, option SLAM</span>.
+            J&apos;aime concevoir des interfaces modernes, développer des applications fiables et apprendre en continu
+            de nouvelles
+            technologies.
+          </p>
+
+          <div class="flex flex-wrap gap-3 sm:gap-4 hero-actions">
+            <a href="/Portfolio-2-me-ann-e-BTS-SIO-SLAM/image_portfolio/CV_GOLBIN_Dorian.pdf"
+              class="btn-gradient inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full text-sm sm:text-base font-medium text-white shadow-lg">
+              <i class="fa-solid fa-file-arrow-down text-sm sm:text-base"></i>
+              Télécharger mon CV
+            </a>
+            <a href="#projets"
+              class="btn-outline-glow inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-full text-sm sm:text-base font-medium border border-slate-600 bg-slate-900/70 text-slate-100">
+              <i class="fa-solid fa-code-branch text-sm sm:text-base"></i>
+              Voir mes projets
+            </a>
+          </div>
+
+          <div class="flex items-center gap-6 text-xs sm:text-sm text-slate-300/90 pt-1 info-badges">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.9)]"></span>
+              <span>Actuellement en 2<sup>ème</sup> année de BTS SIO SLAM</span>
+            </div>
+            <div class="hidden sm:flex items-center gap-2">
+              <i class="fa-solid fa-location-dot text-blue-400"></i>
+              <span>Basé à Besançon (25)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carte profil -->
+        <div class="flex-1 flex justify-center">
+          <article
+            class="relative w-full max-w-xs sm:max-w-sm bg-gradient-to-b from-slate-800/95 to-slate-900 border border-slate-700/80 rounded-3xl p-5 sm:p-6 shadow-[0_18px_45px_rgba(15,23,42,0.95)] card-hover">
+
+            <div class="absolute inset-x-0 -top-10 mx-auto w-40 h-40 bg-blue-500/20 rounded-full blur-3xl"></div>
+
+            <!-- Avatar generique -->
+            <div class="relative flex flex-col items-center">
+              <div
+                class="w-28 h-28 rounded-2xl bg-gradient-to-tr from-blue-500/60 via-violet-500/70 to-sky-400/70 flex items-center justify-center shadow-[0_18px_35px_rgba(37,99,235,0.8)] border border-slate-500/60">
+                <i class="fa-solid fa-user-graduate text-4xl text-slate-50"></i>
+              </div>
+              <h2 class="mt-4 text-lg sm:text-xl font-semibold text-slate-50 text-center">
+                Dorian GOLBIN
+              </h2>
+              <p class="text-xs sm:text-sm text-blue-200/90 mt-1 text-center">
+                Étudiant en BTS SIO SLAM • Développeur en devenir
+              </p>
+            </div>
+
+            <!-- Infos -->
+            <div class="mt-5 space-y-3 text-xs sm:text-sm text-slate-200">
+              <div class="flex items-center justify-between">
+                <span class="text-slate-400">Formation actuelle</span>
+                <span class="px-2.5 py-1 rounded-full bg-slate-800 text-[0.7rem] border border-blue-500/40">
+                  BTS SIO SLAM
+                </span>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 mt-4">
+                <div class="rounded-2xl bg-slate-900/70 border border-slate-600/80 px-3 py-2.5">
+                  <p class="text-[0.7rem] uppercase text-slate-400 tracking-wide">Spécialité</p>
+                  <p class="mt-1.5 text-sm text-slate-100">Développement</p>
+                  <p class="text-[0.7rem] text-slate-400 mt-0.5">Web & applications</p>
+                </div>
+                <div class="rounded-2xl bg-slate-900/70 border border-slate-600/80 px-3 py-2.5">
+                  <p class="text-[0.7rem] uppercase text-slate-400 tracking-wide">Objectifs</p>
+                  <p class="mt-1.5 text-sm text-slate-100">Monter en compétences</p>
+                  <p class="text-[0.7rem] text-slate-400 mt-0.5">Stage & alternance</p>
+                </div>
+              </div>
+
+              <div class="mt-3 flex flex-wrap gap-2">
+                <span
+                  class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-900/80 border border-slate-600 text-[0.68rem] text-slate-200/90">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                  Ouvert aux opportunités
+                </span>
+                <span
+                  class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-900/80 border border-slate-600 text-[0.68rem] text-slate-200/90">
+                  <i class="fa-solid fa-code text-[0.7rem] text-blue-300"></i>
+                  Développement web
+                </span>
+              </div>
+            </div>
+
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION A PROPOS / OBJECTIFS -->
+    <section id="apropos" class="max-w-6xl mx-auto px-4 mt-16 md:mt-24">
+      <div
+        class="grid md:grid-cols-[minmax(0,1.5fr)_minmax(0,1.2fr)] gap-8 md:gap-10 items-start bg-slate-900/60 border border-slate-800 rounded-3xl p-6 sm:p-8 card-hover">
+
+        <!-- Bloc texte principal -->
+        <div class="space-y-4 sm:space-y-5">
+          <div class="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-slate-400">
+            <span class="inline-flex w-8 h-[1px] bg-gradient-to-r from-blue-500 to-transparent"></span>
+            <span>A propos de moi</span>
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl font-semibold text-slate-50">
+            Étudiant motivé, en progression constante
+          </h2>
+
+          <p class="text-sm sm:text-base text-slate-200 leading-relaxed">
+            Actuellement en <span class="font-semibold text-blue-300">BTS Services Informatiques aux Organisations,
+              option Solutions Logicielles et Applications Métiers (SLAM)</span>, je développe mes compétences en
+            <span class="font-medium text-blue-200">programmation, conception d&apos;de site web et d'application, base
+              de données,
+              et gestion de projets</span>.
+          </p>
+
+          <p class="text-sm sm:text-base text-slate-200 leading-relaxed">
+            Ma formation me permet d&apos;apprendre les bases solides du métier de développeur tout en réalisant
+            des projets concrets. Je m&apos;intéresse particulièrement au <span
+              class="font-medium text-blue-200">développement web</span>, à
+            la <span class="font-medium text-blue-200">qualité du code</span> et aux <span
+              class="font-medium text-blue-200">bonnes pratiques</span>.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-4 mt-4">
+            <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-4">
+              <h3 class="text-sm font-semibold text-slate-100 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                Ce que je recherche
+              </h3>
+              <p class="mt-2 text-xs sm:text-[0.8rem] text-slate-300 leading-relaxed">
+                Un <span class="font-medium text-blue-200">stage en développement</span> pour mettre en pratique
+                mes compétences, découvrir de nouvelles technologies et contribuer à des projets réels.
+              </p>
+            </div>
+            <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-4">
+              <h3 class="text-sm font-semibold text-slate-100 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                Mes qualités
+              </h3>
+              <p class="mt-2 text-xs sm:text-[0.8rem] text-slate-300 leading-relaxed">
+                Sérieux, motivé, curieux et à l&apos;écoute, j&apos;aime apprendre et progresser. Je suis capable de
+                travailler en autonomie mais aussi de collaborer efficacement en équipe.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bloc info rapide -->
+        <div class="space-y-4 sm:space-y-5">
+          <div class="bg-slate-900/80 border border-slate-700 rounded-2xl p-4 sm:p-5">
+            <h3 class="text-sm font-semibold text-slate-100 flex items-center gap-2">
+              <i class="fa-solid fa-circle-info text-blue-400"></i>
+              Informations rapides
+            </h3>
+            <dl class="mt-3 space-y-2 text-xs sm:text-sm text-slate-200">
+              <div class="flex justify-between gap-4">
+                <dt class="text-slate-400">Nom</dt>
+                <dd class="font-medium text-slate-100">Dorian GOLBIN</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-slate-400">Formation</dt>
+                <dd class="font-medium text-slate-100 text-right">BTS SIO SLAM</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt class="text-slate-400">Localisation</dt>
+                <dd class="font-medium text-slate-100">Besançon (25)</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="bg-slate-900/80 border border-slate-700 rounded-2xl p-4 sm:p-5">
+            <h3 class="text-sm font-semibold text-slate-100 flex items-center gap-2">
+              <i class="fa-solid fa-bullseye text-blue-400"></i>
+              Objectifs à court terme
+            </h3>
+            <ul class="mt-3 space-y-2 text-xs sm:text-sm text-slate-200">
+              <li class="flex gap-2">
+                <span class="mt-1 w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                <span>Valider mon BTS SIO SLAM avec de bonnes compétences techniques et professionnelles.</span>
+              </li>
+              <li class="flex gap-2">
+                <span class="mt-1 w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                <span>Réaliser des projets complets, de l&apos;analyse au déploiement.</span>
+              </li>
+              <li class="flex gap-2">
+                <span class="mt-1 w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                <span>Continuer à progresser en développement web (HTML, CSS, PHP, JavaScript, SQL...)</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PARCOURS -->
+    <section id="parcours" class="max-w-6xl mx-auto px-4 mt-16 md:mt-24">
+      <h2 class="text-3xl font-bold text-blue-400 text-center">Parcours</h2>
+
+      <div class="mt-10 grid md:grid-cols-[minmax(0,1.6fr)_minmax(0,1.2fr)] gap-8 md:gap-12 items-start">
+        <!-- Timeline scolaire -->
+        <div class="relative bg-slate-900/60 border border-slate-800 rounded-3xl p-6 sm:p-7 card-hover">
+          <div class="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-slate-400 mb-4">
+            <span class="inline-flex w-8 h-[1px] bg-gradient-to-r from-blue-500 to-transparent"></span>
+            <span>Parcours scolaire</span>
+          </div>
+
+          <div class="relative">
+            <div class="timeline-line"></div>
+
+            <!-- BTS SIO SLAM -->
+            <article class="relative pl-7 pb-7">
+              <div
+                class="timeline-bullet absolute left-0 top-1 w-3 h-3 rounded-full bg-blue-400 border border-slate-900">
+              </div>
+              <div
+                class="bg-slate-800/80 border border-slate-700 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div>
+                  <h3 class="text-sm sm:text-base font-semibold text-slate-50">
+                    BTS Services Informatiques aux Organisations - SLAM
+                  </h3>
+                  <p class="text-xs text-slate-400 mt-1">
+                    Lycée Louis Pergaud - Besançon 25000
+                  </p>
+                  <p class="text-xs sm:text-[0.8rem] text-slate-300 mt-2">
+                    Formation centrée sur le développement d&apos;applications, la programmation, les bases de données
+                    et la gestion de projets.
+                  </p>
+                </div>
+                <div class="text-xs text-right text-slate-300">
+                  <p class="font-semibold text-blue-300">2024 - 2026</p>
+                  <p class="text-slate-400 mt-1">En cours</p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Bac ou autre -->
+            <article class="relative pl-7 pb-3">
+              <div
+                class="timeline-bullet absolute left-0 top-1 w-3 h-3 rounded-full bg-blue-400 border border-slate-900">
+              </div>
+              <div
+                class="bg-slate-800/80 border border-slate-700 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div>
+                  <h3 class="text-sm sm:text-base font-semibold text-slate-50">
+                    Baccalauréat professionnel option SSIHT
+                  </h3>
+                  <p class="text-xs text-slate-400 mt-1">
+                    Lycée Luxembourg - Vesoul 70000
+                  </p>
+                  <p class="text-xs sm:text-[0.8rem] text-slate-300 mt-2">
+                    Formation axée sur les systèmes électroniques, la maintenance et l&apos;installation.
+                  </p>
+                </div>
+                <div class="text-xs text-right text-slate-300">
+                  <p class="font-semibold text-blue-300">2022 - 2024</p>
+                  <p class="text-slate-400 mt-1">Obtenu</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Bloc info rapide -->
+        <div class="space-y-5">
+          <article class="bg-slate-900/70 border border-slate-800 rounded-3xl p-5 sm:p-6 card-hover">
+            <h3 class="text-base sm:text-lg font-semibold text-slate-50 flex items-center gap-2">
+              <i class="fa-solid fa-graduation-cap text-blue-400"></i>
+              Compétences développées en BTS SIO SLAM
+            </h3>
+            <ul class="mt-3 space-y-2 text-xs sm:text-sm text-slate-200">
+              <li class="flex gap-2">
+                <span class="mt-1 w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                <span>Programmation (algorithmique, PHP, POO...).</span>
+              </li>
+              <li class="flex gap-2">
+                <span class="mt-1 w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                <span>Développement d&apos;applications et de sites web.</span>
+              </li>
+              <li class="flex gap-2">
+                <span class="mt-1 w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                <span>Gestion de bases de données (SQL).</span>
+              </li>
+              <li class="flex gap-2">
+                <span class="mt-1 w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                <span>Analyse des besoins et gestion de projet.</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="bg-slate-900/70 border border-slate-800 rounded-3xl p-5 sm:p-6 card-hover">
+            <h3 class="text-base sm:text-lg font-semibold text-slate-50 flex items-center gap-2">
+              <i class="fa-solid fa-flag-checkered text-blue-400"></i>
+              Après le BTS
+            </h3>
+            <p class="mt-3 text-xs sm:text-sm text-slate-200 leading-relaxed">
+              Après mon BTS SIO SLAM, je souhaite continuer à évoluer dans le domaine du développement
+              (licence, école spécialisée, alternance...) et me spécialiser progressivement selon les opportunités et
+              les
+              technologies qui me passionnent.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- STAGES -->
+    <section id="stages" class="max-w-6xl mx-auto px-4 mt-16 md:mt-24">
+      <h2 class="text-3xl font-bold text-blue-400 text-center">Stages</h2>
+
+      <div class="mt-10 grid sm:grid-cols-2 md:grid-cols-2 gap-6 md:gap-8">
+
+        <!-- Carte Stage 1 -->
+        <article
+          class="relative bg-slate-800 rounded-2xl overflow-hidden p-6 sm:p-7 shadow-md hover:shadow-xl transition card-hover border border-slate-700">
+          <div class="absolute top-0 right-0 w-28 h-28 bg-blue-500/10 rounded-full translate-x-1/2 -translate-y-1/2">
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4 mb-4">
+            <div
+              class="w-11 h-11 rounded-xl bg-slate-900/90 border border-slate-600 flex items-center justify-center shadow-md">
+              <i class="fa-solid fa-laptop-code text-blue-400 text-xl"></i>
+            </div>
+            <div class="flex flex-col gap-1 text-white">
+              <h3 class="text-blue-300 text-lg font-semibold">
+                Stage de 1<sup>ère</sup> année – Développement Python
+              </h3>
+              <p class="font-light text-sm text-slate-300">BTS SIO SLAM</p>
+              <p class="text-xs text-sky-300/90">Période : 2024 - 2025</p>
+            </div>
+          </div>
+
+          <p class="text-sm text-slate-200 mb-3">
+            Développement d’une application en Python pour Parisot Industrie(industrie du meuble).
+            L’outil permettait de lire un fichier texte contenant des codes EAN, puis de les trier, les filtrer et les
+            organiser
+            afin d’améliorer le suivi des commandes.
+          </p>
+
+          <ul class="text-xs sm:text-sm text-slate-300 space-y-1.5 mb-4">
+            <li class="flex gap-2">
+              <span class="mt-1 w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+              <span>Programmation Python (traitement des données et développement d’une interface utilisateur
+                complète).</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+              <span>Participation à des projets concrets.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+              <span>Découverte du fonctionnement d&apos;une équipe informatique.</span>
+            </li>
+          </ul>
+
+
+        </article>
+
+        <!-- Carte Stage 2 (placeholder pour l'avenir) -->
+        <article
+          class="relative bg-slate-800 rounded-2xl overflow-hidden p-6 sm:p-7 shadow-md hover:shadow-xl transition card-hover border border-slate-700/80">
+          <div class="absolute top-0 left-0 w-28 h-28 bg-violet-500/10 rounded-full -translate-x-1/2 -translate-y-1/2">
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-4 mb-4">
+            <div
+              class="w-11 h-11 rounded-xl bg-slate-900/90 border border-slate-600 flex items-center justify-center shadow-md">
+              <i class="fa-solid fa-briefcase text-violet-400 text-xl"></i>
+            </div>
+            <div class="flex flex-col gap-1 text-white">
+              <h3 class="text-violet-300 text-lg font-semibold">
+                Stage de 2<sup>ème</sup> année (à venir)
+              </h3>
+              <p class="font-light text-sm text-slate-300">Spécialisation & responsabilités</p>
+              <p class="text-xs text-violet-200/90">Période : à définir (2026)</p>
+            </div>
+          </div>
+
+          <p class="text-sm text-slate-200 mb-3">
+            Ce second stage me permettra d&apos;approfondir mes compétences dans un environnement plus responsabilisant,
+            avec une implication plus forte dans les projets.
+          </p>
+
+          <ul class="text-xs sm:text-sm text-slate-300 space-y-1.5 mb-4">
+            <li class="flex gap-2">
+              <span class="mt-1 w-1.5 h-1.5 rounded-full bg-violet-400"></span>
+              <span>Participation à la conception et au développement d&apos;applications.</span>
+            </li>
+            <li class="flex gap-2">
+              <span class="mt-1 w-1.5 h-1.5 rounded-full bg-violet-400"></span>
+              <span>Possibilité d&apos;alternance ou de poursuite d&apos;études.</span>
+            </li>
+          </ul>
+
+          <p class="text-xs text-slate-400 italic">
+            Cette section pourra être complétée dès que j&apos;aurai trouvé et réalisé ces stages.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCES -->
+    <section id="experiences" class="max-w-6xl mx-auto px-4 mt-16 md:mt-24">
+      <h2 class="text-3xl font-bold text-blue-400 text-center">Expériences</h2>
+
+      <div class="mt-10 grid sm:grid-cols-2 md:grid-cols-2 gap-6 md:gap-8">
+        <!-- Carte Expérience 1 -->
+        <article
+          class="relative bg-slate-700 rounded-2xl overflow-hidden p-6 sm:p-8 shadow-md hover:shadow-xl transition border border-slate-600/80">
+          <div class="absolute top-0 right-0 w-28 h-28 bg-purple-700/20 rounded-full translate-x-1/2 -translate-y-1/2">
+          </div>
+          <div class="flex flex-col sm:flex-row gap-4 mb-4">
+            <i
+              class="text-3xl fa-solid fa-briefcase text-purple-400 bg-purple-700 bg-opacity-50 p-3 rounded-xl mb-2 sm:mb-12"></i>
+            <div class="flex flex-col gap-1 text-white">
+              <h3 class="text-purple-400 text-lg font-semibold">
+                Intermarché - Caissier / Employé polyvalent
+              </h3>
+              <p class="font-light">2025 - 2026</p>
+              <p class="font-light">8 Pl. René Cassin, 25000 Besançon</p>
+            </div>
+          </div>
+          <div class="border-l-2 border-purple-500 pl-4">
+            <h4 class="text-purple-400 mb-2 font-medium">
+              Missions principales :
+
+            </h4>
+            <ul class="list-disc ml-4 text-sm text-slate-100 space-y-2">
+              <li>
+                Accueil et service clientèle en tant que <span class="font-semibold">caissier</span>, gestion des
+                transactions et fidélisation.
+              </li>
+              <li>
+                Cuisson du pain et des viennoiseries, réassortiment des rayons en tant qu&apos;<span
+                  class="font-semibold">employé polyvalent</span>.
+              </li>
+              <li>
+                Maintien de la propreté et de l&apos;organisation du magasin, respect des normes d&apos;hygiène et de
+                sécurité.
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- Carte Expérience 2 -->
+        <article
+          class="relative bg-slate-700 rounded-2xl overflow-hidden p-6 sm:p-8 shadow-md hover:shadow-xl transition border border-slate-600/80">
+          <div class="absolute top-0 right-0 w-28 h-28 bg-blue-700/20 rounded-full translate-x-1/2 -translate-y-1/2">
+          </div>
+          <div class="flex flex-col sm:flex-row gap-4 mb-4">
+            <i
+              class="text-3xl fa-solid fa-briefcase text-blue-400 bg-blue-700 bg-opacity-50 p-3 rounded-xl mb-2 sm:mb-12"></i>
+            <div class="flex flex-col gap-1 text-white">
+              <h3 class="text-blue-400 text-lg font-semibold">
+                Parisot Industrie
+              </h3>
+              <p class="font-light">Job d'Été</p>
+              <p class="font-light">Saint-Loup-sur-Semouse</p>
+            </div>
+          </div>
+          <div class="border-l-2 border-blue-500 pl-4">
+            <h4 class="text-blue-400 mb-2 font-medium">
+              Compétences développées :
+            </h4>
+            <ul class="list-disc ml-4 text-sm text-slate-100 space-y-2">
+              <li>
+                <span class="font-semibold">Sens de l&apos;organisation</span> et gestion efficace du temps.
+              </li>
+              <li>
+                <span class="font-semibold">Travail en équipe</span> et respect des consignes.
+              </li>
+              <li>
+                <span class="font-semibold">Rigueur</span> et attention aux détails dans les tâches assignées.
+              </li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- COMPÉTENCES -->
+    <section id="competences" class="max-w-6xl mx-auto px-4 mt-16 md:mt-24">
+      <h2 class="text-3xl font-bold text-blue-400 text-center">Compétences</h2>
+
+      <div class="mt-10 grid md:grid-cols-[minmax(0,1.6fr)_minmax(0,1.4fr)] gap-8 md:gap-10">
+
+        <!-- Compétences techniques -->
+        <div class="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 sm:p-7 card-hover">
+          <div class="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-slate-400 mb-4">
+            <span class="inline-flex w-8 h-[1px] bg-gradient-to-r from-blue-500 to-transparent"></span>
+            <span>Compétences techniques</span>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4 sm:gap-5 text-sm">
+            <article class="space-y-2">
+              <h3 class="text-slate-100 font-semibold flex items-center gap-2">
+                <i class="fa-solid fa-code text-blue-400"></i>
+                Développement web
+              </h3>
+              <ul class="text-slate-200 text-xs sm:text-sm space-y-1.5">
+                <li class="list-disc">Développement en PHP natif : pages dynamiques, traitement de formulaires,
+                  architecture simple MVC,
+                  gestion de sessions
+                  et logique backend.</li>
+                <li class="list-disc">Expérience en POO PHP : classes, méthodes, organisation du code, séparation des
+                  responsabilités.
+                </li>
+                <li class="list-disc">Intégration front-end : HTML/CSS, Tailwind CSS, responsive design, premières bases
+                  en JavaScript.
+                </li>
+              </ul>
+            </article>
+
+            <article class="space-y-2">
+              <h3 class="text-slate-100 font-semibold flex items-center gap-2">
+                <i class="fa-solid fa-database text-emerald-400"></i>
+                Bases de données
+              </h3>
+              <ul class="text-slate-200 text-xs sm:text-sm space-y-1.5">
+                <li class="list-disc">Notions de SQL.</li>
+                <li class="list-disc">Modélisation simple de bases de données.</li>
+                <li class="list-disc">Connexion PHP ↔ MySQL via PDO, sécurisation basique (requêtes préparées).</li>
+              </ul>
+            </article>
+
+            <article class="space-y-2">
+              <h3 class="text-slate-100 font-semibold flex items-center gap-2">
+                <i class="fa-solid fa-laptop-code text-sky-400"></i>
+                Programmation
+              </h3>
+              <ul class="text-slate-200 text-xs sm:text-sm space-y-1.5">
+                <li>Projets en PHP (applications web) et Python (stage – traitement de données, interface via tkinter).
+                  Compréhension des algorithmes, boucles, conditions et logique métier.</li>
+              </ul>
+            </article>
+
+            <article class="space-y-2">
+              <h3 class="text-slate-100 font-semibold flex items-center gap-2">
+                <i class="fa-solid fa-network-wired text-violet-400"></i>
+                Autres compétences
+              </h3>
+              <ul class="text-slate-200 text-xs sm:text-sm space-y-1.5">
+                <li>Utilisation d&apos;outils bureautiques.</li>
+                <li>Notions sur les systèmes d&apos;information.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+
+        <!-- Compétences transversales -->
+        <div class="space-y-5">
+          <article class="bg-slate-900/70 border border-slate-800 rounded-3xl p-5 sm:p-6 card-hover">
+            <h3 class="text-base sm:text-lg font-semibold text-slate-50 flex items-center gap-2">
+              <i class="fa-solid fa-people-group text-blue-400"></i>
+              Compétences transversales
+            </h3>
+            <ul class="mt-3 space-y-2 text-xs sm:text-sm text-slate-200">
+              <li class="flex gap-2">
+                <span class="mt-1 w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                <span>Travail en équipe et communication.</span>
+              </li>
+              <li class="flex gap-2">
+                <span class="mt-1 w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                <span>Capacité d&apos;adaptation à de nouveaux environnements.</span>
+              </li>
+              <li class="flex gap-2">
+                <span class="mt-1 w-1.5 h-1.5 rounded-full bg-blue-400"></span>
+                <span>Organisation, respect des consignes et des délais.</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="bg-slate-900/70 border border-slate-800 rounded-3xl p-5 sm:p-6 card-hover">
+            <h3 class="text-base sm:text-lg font-semibold text-slate-50 flex items-center gap-2">
+              <i class="fa-solid fa-language text-emerald-400"></i>
+              Langues
+            </h3>
+            <ul class="mt-3 space-y-2 text-xs sm:text-sm text-slate-200">
+              <li class="flex justify-between">
+                <span>Français</span>
+                <span class="text-slate-300">Langue maternelle</span>
+              </li>
+              <li class="flex justify-between">
+                <span>Anglais</span>
+                <span class="text-slate-300">Niveau B1</span>
+              </li>
+            </ul>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJETS -->
+    <section id="projets" class="max-w-6xl mx-auto px-4 mt-16 md:mt-24">
+      <h2 class="text-3xl font-bold text-blue-400 text-center">Projets</h2>
+
+      <p class="mt-4 text-center text-sm sm:text-base text-slate-300 max-w-2xl mx-auto">
+        Voici quelques projets réalisés dans le cadre de ma formation ou à titre personnel. Cette section sera
+        enrichie au fur et à mesure de ma progression.
+      </p>
+
+      <div class="mt-10 grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-7">
+
+        <!-- Projet 1 -->
+        <article
+          class="bg-slate-800 rounded-2xl border border-slate-700 card-hover p-5 sm:p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-slate-50 font-semibold text-base sm:text-lg">Projet 1</h3>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-blue-900/60 text-blue-200 border border-blue-500/40">
+                BTS SIO
+              </span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-200">
+              Ce projet pourra décrire une réalisation effectuée en cours ou en autonomie (site web, mini application,
+              etc.).
+            </p>
+          </div>
+          <div class="mt-4 flex flex-wrap gap-2 text-[0.68rem] text-slate-300">
+            <span class="px-2 py-1 rounded-full bg-slate-900/80 border border-slate-700/80">HTML</span>
+            <span class="px-2 py-1 rounded-full bg-slate-900/80 border border-slate-700/80">CSS</span>
+          </div>
+        </article>
+
+        <!-- Projet 2 -->
+        <article
+          class="bg-slate-800 rounded-2xl border border-slate-700 card-hover p-5 sm:p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-slate-50 font-semibold text-base sm:text-lg">Projet 2</h3>
+              <span
+                class="text-xs px-2 py-0.5 rounded-full bg-violet-900/60 text-violet-200 border border-violet-500/40">
+                Personnel
+              </span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-200">
+              Cette carte pourra être complétée avec un projet personnel (site, script, outil, etc.).
+            </p>
+          </div>
+          <div class="mt-4 flex flex-wrap gap-2 text-[0.68rem] text-slate-300">
+            <span class="px-2 py-1 rounded-full bg-slate-900/80 border border-slate-700/80">HTML</span>
+            <span class="px-2 py-1 rounded-full bg-slate-900/80 border border-slate-700/80">CSS</span>
+          </div>
+        </article>
+
+        <!-- Projet 3 -->
+        <article
+          class="bg-slate-800 rounded-2xl border border-slate-700 card-hover p-5 sm:p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-slate-50 font-semibold text-base sm:text-lg">Projet 3</h3>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-slate-900/80 text-slate-200 border border-slate-600/80">
+                À venir
+              </span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-200">
+              Cette section est prête à accueillir un nouveau projet (par exemple en PHP / SQL).
+            </p>
+          </div>
+          <div class="mt-4 flex flex-wrap gap-2 text-[0.68rem] text-slate-300">
+            <span class="px-2 py-1 rounded-full bg-slate-900/80 border border-slate-700/80">Projet à définir</span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- VEILLE TECHNOLOGIQUE -->
+    <section id="veille" class="mt-16 md:mt-24 px-4">
+      <div class="max-w-6xl mx-auto">
+        <!-- Titre + intro -->
+        <div class="text-center mb-10">
+          <p class="text-xs sm:text-sm font-medium tracking-widest text-blue-300 uppercase">
+            Veille technologique
+          </p>
+          <h2 class="text-3xl font-bold text-blue-400 mt-2">
+            Ma veille en développement & cybersécurité
+          </h2>
+          <p class="mt-4 text-sm sm:text-base text-slate-200 max-w-2xl mx-auto">
+            En tant qu&apos;étudiant en BTS SIO SLAM, je réalise une veille régulière sur les technologies du web,
+            le développement logiciel et la cybersécurité. Cette veille me permet de rester à jour, d&apos;anticiper
+            les évolutions du métier et d&apos;améliorer mes projets.
+          </p>
+        </div>
+
+        <!-- Grille : démarche + cartes visuelles -->
+        <div class="grid gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] items-start">
+          <!-- Bloc texte : démarche de veille -->
+          <article
+            class="relative bg-slate-700 rounded-2xl overflow-hidden p-6 sm:p-8 shadow-md hover:shadow-xl transition border border-slate-600/70">
+            <div class="absolute top-0 right-0 w-28 h-28 bg-blue-500/10 rounded-full translate-x-1/2 -translate-y-1/2">
+            </div>
+
+            <div class="flex items-center gap-3 mb-4">
+              <i class="fa-solid fa-eye text-blue-400 bg-blue-900/60 p-3 rounded-xl text-2xl shadow-md"></i>
+              <h3 class="text-xl font-semibold text-blue-300">
+                Ma démarche de veille
+              </h3>
+            </div>
+
+            <div class="space-y-4 text-sm sm:text-base text-slate-100">
+              <p>
+                Je consacre du temps chaque semaine à ma veille, afin de suivre les évolutions des
+                technologies utilisées en BTS SIO SLAM et dans le monde professionnel.
+              </p>
+              <p class="font-semibold text-blue-300">
+                Sources principales :
+              </p>
+              <ul class="list-disc list-inside space-y-1">
+                <li>Sites spécialisés : Blog du Modérateur, ZDNet, Developpez.com, etc.</li>
+                <li>Chaînes YouTube et conférences autour du développement et de la cybersécurité.</li>
+                <li>Réseaux professionnels (LinkedIn) et retours d&apos;expérience de développeurs.</li>
+                <li>Documentations officielles (PHP, JavaScript, SQL, sécurité, bonnes pratiques).</li>
+              </ul>
+              <p>
+                Je m&apos;intéresse particulièrement au
+                <span class="text-blue-300 font-medium">développement web, à la sécurité des applications, à
+                  l&apos;optimisation et à l&apos;accessibilité</span>.
+              </p>
+            </div>
+          </article>
+
+          <!-- Cartes : sujets ou articles récents -->
+          <div class="space-y-4">
+            <h3 class="text-lg font-semibold text-blue-300">
+              Quelques sujets suivis récemment
+            </h3>
+            <div class="grid gap-4 sm:grid-cols-2">
+              <!-- Carte 1 -->
+              <article
+                class="bg-slate-700 rounded-2xl p-4 sm:p-5 border border-slate-600/80 hover:border-blue-400 hover:-translate-y-1 hover:shadow-xl transition flex flex-col">
+                <p class="text-xs uppercase tracking-wide text-blue-300">
+                  Performance front-end
+                </p>
+                <h4 class="mt-1 text-sm font-semibold text-white">
+                  Optimisation du temps de chargement
+                </h4>
+                <p class="mt-2 text-xs sm:text-sm text-slate-200">
+                  Réduction du poids des pages (images, CSS, JS), bonnes pratiques de mise en cache
+                  et impact direct sur l&apos;expérience utilisateur.
+                </p>
+              </article>
+
+              <!-- Carte 2 -->
+              <article
+                class="bg-slate-700 rounded-2xl p-4 sm:p-5 border border-slate-600/80 hover:border-blue-400 hover:-translate-y-1 hover:shadow-xl transition flex flex-col">
+                <p class="text-xs uppercase tracking-wide text-blue-300">
+                  Cybersécurité
+                </p>
+                <h4 class="mt-1 text-sm font-semibold text-white">
+                  Vulnérabilités des applications web
+                </h4>
+                <p class="mt-2 text-xs sm:text-sm text-slate-200">
+                  Découverte des principales failles (injections, XSS, gestion des mots de passe)
+                  et des moyens de les limiter dans les projets PHP/SQL.
+                </p>
+              </article>
+
+              <!-- Carte 3 -->
+              <article
+                class="bg-slate-700 rounded-2xl p-4 sm:p-5 border border-slate-600/80 hover:border-blue-400 hover:-translate-y-1 hover:shadow-xl transition flex flex-col">
+                <p class="text-xs uppercase tracking-wide text-blue-300">
+                  Outils & workflow
+                </p>
+                <h4 class="mt-1 text-sm font-semibold text-white">
+                  Git & bonnes pratiques de versionning
+                </h4>
+                <p class="mt-2 text-xs sm:text-sm text-slate-200">
+                  Utilisation de GitHub pour suivre l&apos;évolution de mes projets, collaborer
+                  et garder un historique propre de mon code.
+                </p>
+              </article>
+
+              <!-- Carte 4 -->
+              <article
+                class="bg-slate-700 rounded-2xl p-4 sm:p-5 border border-slate-600/80 hover:border-blue-400 hover:-translate-y-1 hover:shadow-xl transition flex flex-col">
+                <p class="text-xs uppercase tracking-wide text-blue-300">
+                  BTS SIO SLAM
+                </p>
+                <h4 class="mt-1 text-sm font-semibold text-white">
+                  Technologies au programme & évolutions
+                </h4>
+                <p class="mt-2 text-xs sm:text-sm text-slate-200">
+                  Suivi des langages, frameworks et outils présents dans le BTS et de leur évolution
+                  dans le monde professionnel.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bloc flux RSS -->
+        <div class="mt-12">
+          <h3 class="text-lg font-semibold text-blue-300 mb-3">
+            Flux RSS / actualités que je suis
+          </h3>
+          <p class="text-sm sm:text-base text-slate-200 mb-4">
+            Ci-dessous, un flux d&apos;actualités techniques que j&apos;utilise pour suivre les articles récents.
+            Je peux adapter ce flux en fonction de mes centres d&apos;intérêt (développement web, sécurité, bases de
+            données, etc.).
+          </p>
+
+          <div class="bg-slate-700 border border-slate-600/80 rounded-2xl p-4 sm:p-5 shadow-md">
+            <div class="mt-8">
+              <h3 class="text-lg font-semibold text-blue-300 mb-3">
+                Articles récents de ma veille
+              </h3>
+
+              <div id="rss-feed" class="grid gap-4 sm:grid-cols-2">
+                <!-- Les cartes seront injectées ici en JavaScript -->
+              </div>
+
+              <p id="rss-error" class="mt-3 text-xs text-slate-400 hidden">
+                Impossible de charger le flux pour le moment. Veuillez réessayer plus tard.
+              </p>
+            </div>
+            <p class="mt-2 text-xs text-slate-300">
+              URL personnalisable : je peux remplacer ce flux par un widget RSS (FeedWind, RSSinclude, etc.) ou un
+              agrégateur de mon choix.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="mt-16 md:mt-24 px-4 pb-16">
+      <h2 class="text-3xl font-bold text-blue-400 text-center">Contact</h2>
+
+      <div class="max-w-4xl mx-auto mt-10">
+        <form class="w-full mx-auto p-6 sm:p-8 bg-gray-800 rounded-lg space-y-6">
+          <div class="flex flex-col md:flex-row gap-6">
+            <div class="flex-1">
+              <label for="nom" class="text-white font-medium block mb-1">Nom</label>
+              <input type="text" id="nom" name="nom"
+                class="w-full px-4 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-100 text-sm input-focus-ring"
+                placeholder="Votre nom" required />
+            </div>
+            <div class="flex-1">
+              <label for="email" class="text-white font-medium block mb-1">Email</label>
+              <input type="email" id="email" name="email"
+                class="w-full px-4 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-100 text-sm input-focus-ring"
+                placeholder="votre.email@example.com" required />
+            </div>
+          </div>
+
+          <div>
+            <label for="sujet" class="text-white font-medium block mb-1">Sujet</label>
+            <input type="text" id="sujet" name="sujet"
+              class="w-full px-4 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-100 text-sm input-focus-ring"
+              placeholder="Objet de votre message" />
+          </div>
+
+          <div>
+            <label for="message" class="text-white font-medium block mb-1">Message</label>
+            <textarea id="message" name="message" rows="4"
+              class="w-full px-4 py-2.5 rounded-lg bg-slate-900 border border-slate-700 text-slate-100 text-sm input-focus-ring resize-none"
+              placeholder="Votre message..."></textarea>
+          </div>
+
+          <p class="text-xs text-slate-400">
+            Ce formulaire est un exemple d&apos;interface de contact. Vous pouvez me contacter directement à
+            l&apos;adresse suivante :
+            <span class="text-blue-300">golbindorian@gmail.com</span>
+          </p>
+
+          <button type="submit"
+            class="mt-2 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium shadow-lg">
+            <i class="fa-solid fa-paper-plane"></i>
+            Envoyer
+          </button>
+        </form>
+
+        <!-- Coordonnées -->
+        <div class="mt-8 text-sm text-slate-200 bg-slate-900/70 border border-slate-800 rounded-3xl p-5 sm:p-6">
+          <h3 class="text-slate-100 font-semibold mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-address-card text-blue-400"></i>
+            Coordonnées
+          </h3>
+          <div class="space-y-1.5 text-sm">
+            <p>
+              <i class="fa-solid fa-location-dot text-blue-400"></i>
+              <span class="ml-3">Besançon (25000)</span>
+            </p>
+            <p>
+              <i class="fa-solid fa-envelope text-blue-400"></i>
+              <span class="ml-3">golbindorian@gmail.com</span>
+            </p>
+          </div>
+
+          <div class="flex justify-start gap-5 mt-8 mb-6">
+            <a href="https://www.linkedin.com/in/golbin-dorian" aria-label="Profil LinkedIn de Dorian GOLBIN">
+              <i
+                class="border border-none rounded-full bg-blue-900/70 border-blue-500/50 fa-brands fa-linkedin p-2 text-xl text-blue-300 hover:bg-blue-800 transition">
+              </i>
+            </a>
+            <a href="https://github.com/GOLBIN-Dorian" aria-label="Profil GitHub de Dorian GOLBIN">
+              <i
+                class="border border-none rounded-full bg-slate-900/90 border-slate-600 fa-brands fa-github p-2 text-xl text-slate-200 hover:bg-slate-800 transition">
+              </i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-900 border-t border-slate-800 py-4 mt-auto">
+    <div
+      class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm text-slate-400">
+      <p>&copy; 2025 - Portfolio de Dorian GOLBIN. Tous droits réservés.</p>
+      <p class="flex items-center gap-2">
+        <span class="hidden sm:inline">Réalisé avec</span>
+        <i class="fa-solid fa-code text-blue-400"></i>
+        <span>et beaucoup de motivation.</span>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const roles = [
+        'étudiant en BTS SIO SLAM',
+        'développeur web en devenir',
+        'passionné par le code',
+        'curieux des nouvelles technologies'
+      ];
+      const changingText = document.querySelector('#changing-text span');
+      const cursor = document.getElementById('cursor');
+      let roleIndex = 0;
+
+      // Animation curseur
+      setInterval(() => {
+        cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+      }, 600);
+
+      function changeRole() {
+        changingText.classList.remove('fade-in');
+        changingText.classList.add('fade-out');
+
+        setTimeout(() => {
+          roleIndex = (roleIndex + 1) % roles.length;
+          changingText.textContent = roles[roleIndex];
+
+          changingText.classList.remove('fade-out');
+          changingText.classList.add('fade-in');
+        }, 350);
+      }
+
+      setInterval(changeRole, 2600);
+
+      // Gestion du menu burger
+      const menuToggle = document.getElementById('menu-toggle');
+      const navLinks = document.getElementById('nav-links');
+      const menuIcon = menuToggle ? menuToggle.querySelector('i') : null;
+
+      function setMenuState(isOpen) {
+        if (!navLinks || !menuToggle) return;
+
+        if (isOpen) {
+          navLinks.classList.remove('opacity-0', 'max-h-0');
+          navLinks.classList.add('opacity-100');
+          navLinks.style.maxHeight = navLinks.scrollHeight + 'px';
+          navLinks.style.opacity = '1';
+          navLinks.style.transform = 'scaleY(1)';
+          menuToggle.setAttribute('aria-expanded', 'true');
+
+          if (menuIcon) {
+            menuIcon.classList.remove('fa-bars');
+            menuIcon.classList.add('fa-xmark');
+          }
+        } else {
+          navLinks.classList.remove('opacity-100');
+          navLinks.classList.add('opacity-0');
+          navLinks.style.maxHeight = '0';
+          navLinks.style.opacity = '0';
+          navLinks.style.transform = 'scaleY(0.95)';
+          menuToggle.setAttribute('aria-expanded', 'false');
+
+          if (menuIcon) {
+            menuIcon.classList.remove('fa-xmark');
+            menuIcon.classList.add('fa-bars');
+          }
+        }
+      }
+
+      // État initial en fonction de la largeur
+      if (window.innerWidth >= 768) {
+        navLinks.classList.remove('opacity-0', 'max-h-0');
+        navLinks.classList.add('opacity-100');
+        navLinks.style.maxHeight = 'none';
+        navLinks.style.opacity = '1';
+        navLinks.style.transform = 'none';
+      } else {
+        setMenuState(false);
+      }
+
+      menuToggle.addEventListener('click', () => {
+        const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        setMenuState(!isExpanded);
+      });
+
+      // Fermer le menu lorsque l'on clique sur un lien (mobile)
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth < 768) {
+            setMenuState(false);
+          }
+        });
+      });
+
+      // Fermer/forcer l'état du menu si on resize
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+          navLinks.classList.remove('opacity-0', 'max-h-0');
+          navLinks.classList.add('opacity-100');
+          navLinks.style.maxHeight = 'none';
+          navLinks.style.opacity = '1';
+          navLinks.style.transform = 'none';
+          menuToggle.setAttribute('aria-expanded', 'false');
+          if (menuIcon) {
+            menuIcon.classList.remove('fa-xmark');
+            menuIcon.classList.add('fa-bars');
+          }
+        } else {
+          setMenuState(false);
+        }
+      });
+
+      // Section active dans le menu (simple highlight)
+      const sections = document.querySelectorAll('main section[id]');
+      const navItems = document.querySelectorAll('#nav-links a');
+
+      function onScroll() {
+        let currentId = '';
+        const scrollY = window.pageYOffset;
+
+        sections.forEach(section => {
+          const rect = section.getBoundingClientRect();
+          const offsetTop = rect.top + window.pageYOffset - 120;
+          const offsetBottom = offsetTop + section.offsetHeight;
+
+          if (scrollY >= offsetTop && scrollY < offsetBottom) {
+            currentId = section.getAttribute('id');
+          }
+        });
+
+        navItems.forEach(link => {
+          link.classList.remove('text-blue-400');
+          if (link.getAttribute('href') === '#' + currentId) {
+            link.classList.add('text-blue-400');
+          }
+        });
+      }
+
+      window.addEventListener('scroll', onScroll);
+      onScroll();
+
+      // Animation du texte au chargement
+      function typeLoop() {
+        const current = roles[roleIndex];
+        changingText.textContent = current;
+      }
+
+      typeLoop();
+    });
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // ========== VEILLE : Flux RSS en JSON ==========
+      const rssContainer = document.getElementById('rss-feed');
+      const rssError = document.getElementById('rss-error');
+
+      if (rssContainer) {
+        // 1) Choisis ton flux RSS ici
+        const rssUrl = 'https://www.developpez.com/index/rss';
+
+        // 2) API qui transforme le RSS en JSON
+        const apiUrl = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(rssUrl);
+
+        fetch(apiUrl)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Erreur HTTP ' + response.status);
+            }
+            return response.json();
+          })
+          .then(data => {
+            if (!data.items || !Array.isArray(data.items)) {
+              throw new Error('Format inattendu');
+            }
+
+            const articles = data.items.slice(0, 6); // on limite à 6 articles
+            rssContainer.innerHTML = '';
+
+            articles.forEach(item => {
+              const card = document.createElement('article');
+              card.className =
+                'bg-slate-700 rounded-2xl p-4 sm:p-5 border border-slate-600/80 ' +
+                'hover:border-blue-400 hover:-translate-y-1 hover:shadow-xl transition flex flex-col';
+
+              card.innerHTML = `
+        <p class="text-xs uppercase tracking-wide text-blue-300 mb-1">
+          ${item.pubDate ? new Date(item.pubDate).toLocaleDateString('fr-FR') : ''}
+        </p>
+        <h4 class="mt-1 text-sm font-semibold text-white line-clamp-2">
+          ${item.title}
+        </h4>
+        <p class="mt-2 text-xs sm:text-sm text-slate-200 line-clamp-3">
+          ${(item.description || '').replace(/(<([^>]+)>)/gi, '').slice(0, 180)}...
+        </p>
+        <a href="${item.link}" target="_blank" rel="noopener noreferrer"
+          class="mt-3 text-xs font-medium text-blue-300 hover:text-blue-200 inline-flex items-center gap-1">
+          Lire l'article
+          <i class="fa-solid fa-arrow-up-right-from-square text-[0.7rem]"></i>
+        </a>
+            `;
+              rssContainer.appendChild(card);
+            });
+          })
+          .catch(err => {
+            console.error('Erreur chargement RSS :', err);
+            if (rssError) rssError.classList.remove('hidden');
+          });
+      }
+    });
+  </script>
+</body>
+
+</html>
