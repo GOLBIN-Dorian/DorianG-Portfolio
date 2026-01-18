@@ -53,80 +53,29 @@
 
     <style>
         /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        .dark ::-webkit-scrollbar-track { background: #0B1121; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #334155; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .dark ::-webkit-scrollbar-thumb:hover { background: #475569; }
 
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-
-        .dark ::-webkit-scrollbar-track {
-            background: #0B1121;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-
-        .dark ::-webkit-scrollbar-thumb {
-            background: #334155;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-
-        .dark ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-        }
-
-        .tech-badge {
-            @apply text-xs font-medium px-2.5 py-0.5 rounded border;
-        }
+        .tech-badge { @apply text-xs font-medium px-2.5 py-0.5 rounded border; }
 
         /* Scrollbar du flux RSS */
-        .rss-scroll::-webkit-scrollbar {
-            width: 6px;
-        }
+        .rss-scroll::-webkit-scrollbar { width: 6px; }
+        .rss-scroll::-webkit-scrollbar-track { background: #f8fafc; }
+        .dark .rss-scroll::-webkit-scrollbar-track { background: #1e293b; }
+        .rss-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .dark .rss-scroll::-webkit-scrollbar-thumb { background: #475569; }
 
-        .rss-scroll::-webkit-scrollbar-track {
-            background: #f8fafc;
-        }
+        .timeline-border { border-left: 2px solid #cbd5e1; }
+        .dark .timeline-border { border-left: 2px solid #334155; }
 
-        .dark .rss-scroll::-webkit-scrollbar-track {
-            background: #1e293b;
-        }
-
-        .rss-scroll::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 10px;
-        }
-
-        .dark .rss-scroll::-webkit-scrollbar-thumb {
-            background: #475569;
-        }
-
-        .timeline-border {
-            border-left: 2px solid #cbd5e1;
-        }
-
-        .dark .timeline-border {
-            border-left: 2px solid #334155;
-        }
-
-        /* Animation d'apparition */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* Animation d'apparition (Scroll Reveal) */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* Curseur machine à écrire */
         .typewriter-cursor {
@@ -135,78 +84,25 @@
             background-color: #3b82f6;
             animation: blink 1s step-end infinite;
         }
-
-        @keyframes blink {
-            50% {
-                opacity: 0;
-            }
-        }
+        @keyframes blink { 50% { opacity: 0; } }
 
         /* Styles pour le Markdown (README) dans la modale */
-        .markdown-body h1 {
-            font-size: 1.5em;
-            font-weight: bold;
-            margin: 0.5em 0;
-        }
-
-        .markdown-body h2 {
-            font-size: 1.3em;
-            font-weight: bold;
-            margin: 0.5em 0;
-        }
-
-        .markdown-body p {
-            margin-bottom: 0.8em;
-            line-height: 1.6;
-        }
-
-        .markdown-body ul {
-            list-style-type: disc;
-            padding-left: 1.5em;
-            margin-bottom: 0.8em;
-        }
-
-        .markdown-body code {
-            background: rgba(0, 0, 0, 0.1);
-            padding: 0.2em 0.4em;
-            rounded: 3px;
-            font-family: monospace;
-        }
-
-        .dark .markdown-body code {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .markdown-body pre {
-            background: #f1f5f9;
-            padding: 1em;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin-bottom: 1em;
-        }
-
-        .dark .markdown-body pre {
-            background: #0f172a;
-        }
-
-        .markdown-body img {
-            max-width: 100%;
-            border-radius: 8px;
-            margin: 1em 0;
-        }
-
-        .markdown-body a {
-            color: #3b82f6;
-            text-decoration: underline;
-        }
+        .markdown-body h1 { font-size: 1.5em; font-weight: bold; margin: 0.5em 0; }
+        .markdown-body h2 { font-size: 1.3em; font-weight: bold; margin: 0.5em 0; }
+        .markdown-body p { margin-bottom: 0.8em; line-height: 1.6; }
+        .markdown-body ul { list-style-type: disc; padding-left: 1.5em; margin-bottom: 0.8em; }
+        .markdown-body code { background: rgba(0,0,0,0.1); padding: 0.2em 0.4em; rounded: 3px; font-family: monospace; }
+        .dark .markdown-body code { background: rgba(255,255,255,0.1); }
+        .markdown-body pre { background: #f1f5f9; padding: 1em; border-radius: 8px; overflow-x: auto; margin-bottom: 1em; }
+        .dark .markdown-body pre { background: #0f172a; }
+        .markdown-body img { max-width: 100%; border-radius: 8px; margin: 1em 0; }
+        .markdown-body a { color: #3b82f6; text-decoration: underline; }
     </style>
 </head>
 
-<body
-    class="bg-slate-50 text-slate-800 dark:bg-dark-bg dark:text-slate-200 antialiased selection:bg-brand-blue selection:text-white transition-colors duration-300">
+<body class="bg-slate-50 text-slate-800 dark:bg-dark-bg dark:text-slate-200 antialiased selection:bg-brand-blue selection:text-white transition-colors duration-300">
 
-    <header
-        class="fixed w-full top-0 z-50 bg-white/90 dark:bg-dark-bg/90 backdrop-blur-md shadow-sm border-b border-slate-100 dark:border-slate-800 h-16 transition-all duration-300">
+    <header class="fixed w-full top-0 z-50 bg-white/90 dark:bg-dark-bg/90 backdrop-blur-md shadow-sm border-b border-slate-100 dark:border-slate-800 h-16 transition-all duration-300">
         <div class="container mx-auto px-6 h-full flex justify-between items-center">
 
             <a href="#" class="text-xl font-bold text-brand-dark dark:text-white tracking-tight z-50">
@@ -220,9 +116,7 @@
                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
                     </svg>
                     <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd"
-                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 100 2h1z"
-                            clip-rule="evenodd"></path>
+                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 100 2h1z" clip-rule="evenodd"></path>
                     </svg>
                 </button>
 
@@ -245,54 +139,31 @@
     <div id="mobile-menu"
         class="fixed top-0 right-0 h-full w-80 bg-white dark:bg-dark-card shadow-2xl z-[70] transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col border-l border-slate-100 dark:border-slate-800">
 
-        <div
-            class="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/50">
+        <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/50">
             <span class="text-lg font-bold text-brand-dark dark:text-white">Navigation</span>
             <button onclick="toggleMenu()"
                 class="text-slate-400 dark:text-slate-500 hover:text-red-500 dark:hover:text-red-400 transition-colors p-2 rounded-full hover:bg-red-50 dark:hover:bg-red-900/20 cursor-pointer">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
         </div>
 
         <nav class="flex-1 overflow-y-auto py-6 px-6 space-y-2">
-            <a href="#about" onclick="toggleMenu()"
-                class="nav-link flex items-center justify-between p-3 rounded-xl text-slate-600 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue hover:bg-blue-50 dark:hover:bg-slate-800 transition-all font-medium group"><span>À
-                    propos</span></a>
-            <a href="#skills" onclick="toggleMenu()"
-                class="nav-link flex items-center justify-between p-3 rounded-xl text-slate-600 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue hover:bg-blue-50 dark:hover:bg-slate-800 transition-all font-medium group"><span>Compétences</span></a>
-            <a href="#experience" onclick="toggleMenu()"
-                class="nav-link flex items-center justify-between p-3 rounded-xl text-slate-600 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue hover:bg-blue-50 dark:hover:bg-slate-800 transition-all font-medium group"><span>Expériences</span></a>
-            <a href="#education" onclick="toggleMenu()"
-                class="nav-link flex items-center justify-between p-3 rounded-xl text-slate-600 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue hover:bg-blue-50 dark:hover:bg-slate-800 transition-all font-medium group"><span>Formations</span></a>
-            <a href="#projects" onclick="toggleMenu()"
-                class="nav-link flex items-center justify-between p-3 rounded-xl text-slate-600 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue hover:bg-blue-50 dark:hover:bg-slate-800 transition-all font-medium group"><span>Projets</span></a>
-            <a href="#veille" onclick="toggleMenu()"
-                class="nav-link flex items-center justify-between p-3 rounded-xl text-slate-600 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue hover:bg-blue-50 dark:hover:bg-slate-800 transition-all font-medium group"><span>Veille
-                    Tech</span></a>
-            <a href="#passions" onclick="toggleMenu()"
-                class="nav-link flex items-center justify-between p-3 rounded-xl text-slate-600 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue hover:bg-blue-50 dark:hover:bg-slate-800 transition-all font-medium group"><span>Passions</span></a>
+            <a href="#about" onclick="toggleMenu()" class="nav-link flex items-center justify-between p-3 rounded-xl text-slate-600 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue hover:bg-blue-50 dark:hover:bg-slate-800 transition-all font-medium group"><span>À propos</span></a>
+            <a href="#skills" onclick="toggleMenu()" class="nav-link flex items-center justify-between p-3 rounded-xl text-slate-600 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue hover:bg-blue-50 dark:hover:bg-slate-800 transition-all font-medium group"><span>Compétences</span></a>
+            <a href="#experience" onclick="toggleMenu()" class="nav-link flex items-center justify-between p-3 rounded-xl text-slate-600 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue hover:bg-blue-50 dark:hover:bg-slate-800 transition-all font-medium group"><span>Expériences</span></a>
+            <a href="#education" onclick="toggleMenu()" class="nav-link flex items-center justify-between p-3 rounded-xl text-slate-600 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue hover:bg-blue-50 dark:hover:bg-slate-800 transition-all font-medium group"><span>Formations</span></a>
+            <a href="#projects" onclick="toggleMenu()" class="nav-link flex items-center justify-between p-3 rounded-xl text-slate-600 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue hover:bg-blue-50 dark:hover:bg-slate-800 transition-all font-medium group"><span>Projets</span></a>
+            <a href="#veille" onclick="toggleMenu()" class="nav-link flex items-center justify-between p-3 rounded-xl text-slate-600 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue hover:bg-blue-50 dark:hover:bg-slate-800 transition-all font-medium group"><span>Veille Tech</span></a>
+            <a href="#passions" onclick="toggleMenu()" class="nav-link flex items-center justify-between p-3 rounded-xl text-slate-600 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue hover:bg-blue-50 dark:hover:bg-slate-800 transition-all font-medium group"><span>Passions</span></a>
         </nav>
 
         <div class="p-6 border-t border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/50">
-            <a href="#contact" onclick="toggleMenu()"
-                class="block w-full py-3.5 bg-brand-blue text-white text-center rounded-xl font-bold shadow-lg shadow-blue-500/20 active:scale-95 transition-all hover:bg-blue-600 hover:-translate-y-0.5">Me
-                contacter</a>
+            <a href="#contact" onclick="toggleMenu()" class="block w-full py-3.5 bg-brand-blue text-white text-center rounded-xl font-bold shadow-lg shadow-blue-500/20 active:scale-95 transition-all hover:bg-blue-600 hover:-translate-y-0.5">Me contacter</a>
             <div class="mt-6 flex justify-center space-x-4">
-                <a href="https://www.linkedin.com/in/golbin-dorian/"
-                    class="text-slate-400 hover:text-brand-dark transition-colors"><svg class="w-5 h-5"
-                        fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                    </svg></a>
-                <a id="nav-github-link" href="https://github.com/GOLBIN-Dorian" target="_blank"
-                    class="text-slate-400 hover:text-brand-dark transition-colors"><svg class="w-5 h-5"
-                        fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                    </svg></a>
+                <a href="https://www.linkedin.com/in/golbin-dorian/" class="text-slate-400 hover:text-brand-dark transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg></a>
+                <a id="nav-github-link" href="https://github.com/GOLBIN-Dorian" target="_blank" class="text-slate-400 hover:text-brand-dark transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" /></svg></a>
             </div>
             <div class="mt-4 text-center text-xs text-slate-400 dark:text-slate-500">&copy; 2026 Dorian Golbin</div>
         </div>
@@ -306,9 +177,7 @@
     </button>
 
     <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden dark:bg-dark-bg">
-        <div
-            class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-brand-blue/10 dark:bg-brand-blue/5 rounded-full blur-3xl">
-        </div>
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-brand-blue/10 dark:bg-brand-blue/5 rounded-full blur-3xl"></div>
         <div class="container mx-auto px-6 relative z-10">
             <div class="max-w-4xl mx-auto text-center animate-fade-in">
 
@@ -322,8 +191,7 @@
                     Disponible pour Alternance / Stage
                 </div>
 
-                <h1
-                    class="text-5xl lg:text-7xl font-bold text-brand-dark dark:text-white mb-6 tracking-tight leading-tight">
+                <h1 class="text-5xl lg:text-7xl font-bold text-brand-dark dark:text-white mb-6 tracking-tight leading-tight">
                     Développeur Web & <br>
                     <span id="typewriter-text"
                         class="text-transparent bg-clip-text bg-gradient-to-r from-brand-blue to-brand-accent">Logiciel</span><span
@@ -351,15 +219,16 @@
                         class="px-8 py-3.5 bg-brand-blue hover:bg-blue-600 text-white font-semibold rounded-lg shadow-xl shadow-blue-500/20 transition-all transform hover:-translate-y-1">
                         Voir mes réalisations
                     </a>
-                    <a href="/image_portfolio/CV_GOLBIN_Dorian.pdf" target="_blank"
-                        class="px-8 py-3.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue hover:border-brand-blue font-semibold rounded-lg transition-all flex items-center justify-center gap-2 group">
+                    
+                    <button onclick="openPdf('image_portfolio/CV_GOLBIN_Dorian.pdf')"
+                        class="px-8 py-3.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-brand-blue dark:hover:text-brand-blue hover:border-brand-blue font-semibold rounded-lg transition-all flex items-center justify-center gap-2 group cursor-pointer">
                         <svg class="w-5 h-5 group-hover:animate-bounce" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                         </svg>
-                        Télécharger mon CV
-                    </a>
+                        Voir mon CV
+                    </button>
                 </div>
             </div>
         </div>
@@ -448,7 +317,7 @@
                         <span
                             class="px-3 py-1 bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-400 rounded-lg text-sm border border-teal-100 dark:border-teal-800">Tailwind</span>
                         <span
-                            class="px-3 py-1 bg-slate-100 dark:bg-slate-707 text-slate-600 dark:text-slate-300 rounded-lg text-sm">JS</span>
+                            class="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 rounded-lg text-sm">JS</span>
                         <span
                             class="px-3 py-1 bg-yellow-50 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 rounded-lg text-sm border border-yellow-100 dark:border-yellow-800">ExpressJS</span>
                     </div>
@@ -475,23 +344,31 @@
         <div class="container mx-auto px-6 reveal">
             <h2 class="text-3xl font-bold text-brand-dark dark:text-white mb-12 text-center">Savoir-Être</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="text-center p-6 bg-slate-50 dark:bg-dark-card rounded-xl hover:shadow-lg transition">
-                    <div class="text-4xl mb-3">🔍</div>
+                <div class="text-center p-6 bg-slate-50 dark:bg-dark-card rounded-xl hover:shadow-lg transition group">
+                    <div class="mb-3">
+                         <svg class="w-12 h-12 mx-auto text-brand-blue group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg>
+                    </div>
                     <h3 class="font-bold text-brand-dark dark:text-white">Curiosité</h3>
                     <p class="text-xs text-slate-500 mt-2">Veille constante</p>
                 </div>
-                <div class="text-center p-6 bg-slate-50 dark:bg-dark-card rounded-xl hover:shadow-lg transition">
-                    <div class="text-4xl mb-3">🤝</div>
+                <div class="text-center p-6 bg-slate-50 dark:bg-dark-card rounded-xl hover:shadow-lg transition group">
+                     <div class="mb-3">
+                        <svg class="w-12 h-12 mx-auto text-brand-blue group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </div>
                     <h3 class="font-bold text-brand-dark dark:text-white">Esprit d'équipe</h3>
                     <p class="text-xs text-slate-500 mt-2">Communication</p>
                 </div>
-                <div class="text-center p-6 bg-slate-50 dark:bg-dark-card rounded-xl hover:shadow-lg transition">
-                    <div class="text-4xl mb-3">🧩</div>
+                <div class="text-center p-6 bg-slate-50 dark:bg-dark-card rounded-xl hover:shadow-lg transition group">
+                     <div class="mb-3">
+                        <svg class="w-12 h-12 mx-auto text-brand-blue group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path></svg>
+                    </div>
                     <h3 class="font-bold text-brand-dark dark:text-white">Résolution</h3>
                     <p class="text-xs text-slate-500 mt-2">Logique & Analyse</p>
                 </div>
-                <div class="text-center p-6 bg-slate-50 dark:bg-dark-card rounded-xl hover:shadow-lg transition">
-                    <div class="text-4xl mb-3">⚡</div>
+                <div class="text-center p-6 bg-slate-50 dark:bg-dark-card rounded-xl hover:shadow-lg transition group">
+                     <div class="mb-3">
+                        <svg class="w-12 h-12 mx-auto text-brand-blue group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
                     <h3 class="font-bold text-brand-dark dark:text-white">Autonomie</h3>
                     <p class="text-xs text-slate-500 mt-2">Proactif</p>
                 </div>
@@ -602,7 +479,7 @@
                                 d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
-                    <button onclick="openPdf('/image_portfolio/Certif_ANSSI.pdf')"
+                    <button onclick="openPdf('image_portfolio/Certif_ANSSI.pdf')"
                         class="mt-4 inline-flex items-center text-sm font-semibold text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 transition-colors cursor-pointer">
                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -630,7 +507,7 @@
                             </path>
                         </svg>
                     </div>
-                    <button onclick="openPdf('/image_portfolio/Certifs_CNIL.pdf')"
+                     <button onclick="openPdf('image_portfolio/Certifs_CNIL.pdf')"
                         class="mt-4 inline-flex items-center text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors cursor-pointer">
                         <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -726,6 +603,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
                 <div
                     class="bg-slate-50 dark:bg-slate-800/50 p-8 rounded-2xl border-l-4 border-brand-blue shadow-sm flex flex-col justify-between">
                     <div>
@@ -751,7 +629,7 @@
                                 <div>
                                     <strong class="text-slate-800 dark:text-slate-200">Sécurité des Données :</strong>
                                     <p class="text-sm text-slate-600 dark:text-slate-400">Bonnes pratiques de sécurité,
-                                        gestion des mots de passe.</p>
+                                        gestion des mots de passe, et protection des bases de données.</p>
                                 </div>
                             </li>
                             <li class="flex items-start">
@@ -764,6 +642,7 @@
                             </li>
                         </ul>
                     </div>
+
                     <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700">
                         <h4 class="text-sm font-bold text-slate-700 dark:text-slate-300 mb-3">Mes Outils de Veille :
                         </h4>
@@ -790,10 +669,12 @@
                         <span
                             class="text-xs font-normal text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-700 px-2 py-1 rounded border dark:border-slate-600">Live</span>
                     </h3>
+
                     <div id="rss-feed-container" class="space-y-4 flex-1 overflow-y-auto max-h-[350px] pr-2 rss-scroll">
                         <p class="text-sm text-slate-400 italic">Chargement des articles...</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -805,7 +686,9 @@
                 <h2 class="text-3xl font-bold text-brand-dark dark:text-white">Centres d'Intérêt</h2>
                 <p class="text-slate-500 dark:text-slate-400 mt-2">Ce qui m'anime en dehors du code.</p>
             </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
                 <div
                     class="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-sm hover:shadow-md transition-all text-center group">
                     <div
@@ -821,6 +704,7 @@
                         <strong>Mangas et les Animes</strong>.
                     </p>
                 </div>
+
                 <div
                     class="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-sm hover:shadow-md transition-all text-center group">
                     <div
@@ -835,6 +719,7 @@
                     <p class="text-sm text-slate-600 dark:text-slate-300">Amateur de <strong>Science-fiction,
                             Fantastique et Thriller</strong>.</p>
                 </div>
+
                 <div
                     class="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-sm hover:shadow-md transition-all text-center group">
                     <div
@@ -849,6 +734,7 @@
                     <p class="text-sm text-slate-600 dark:text-slate-300">Montage de PC, veille hardware et jeux vidéo.
                     </p>
                 </div>
+
                 <div
                     class="bg-white dark:bg-dark-card p-8 rounded-2xl shadow-sm hover:shadow-md transition-all text-center group">
                     <div
@@ -863,6 +749,7 @@
                     <p class="text-sm text-slate-600 dark:text-slate-300">Je dessine à mes heures perdues. Un moyen
                         d'évasion et de créativité.</p>
                 </div>
+
             </div>
         </div>
     </section>
@@ -901,11 +788,18 @@
                 <div
                     class="relative transform overflow-hidden rounded-lg bg-white dark:bg-dark-card text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-4xl h-[80vh]">
                     <div
-                        class="bg-gray-50 dark:bg-slate-800 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 border-b border-gray-200 dark:border-slate-700">
+                        class="bg-gray-50 dark:bg-slate-800 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 border-b border-gray-200 dark:border-slate-700 items-center gap-2">
                         <button type="button"
-                            class="mt-3 inline-flex w-full justify-center rounded-md bg-white dark:bg-slate-700 px-3 py-2 text-sm font-semibold text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-slate-600 hover:bg-gray-50 dark:hover:bg-slate-600 sm:mt-0 sm:w-auto"
+                            class="inline-flex w-full justify-center rounded-md bg-white dark:bg-slate-700 px-3 py-2 text-sm font-semibold text-gray-900 dark:text-white shadow-sm ring-1 ring-inset ring-gray-300 dark:ring-slate-600 hover:bg-gray-50 dark:hover:bg-slate-600 sm:w-auto"
                             onclick="closePdf()">Fermer</button>
-                        <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-white mr-auto pt-2"
+                        
+                        <a id="modal-download-btn" href="#" download
+                            class="inline-flex w-full justify-center rounded-md bg-brand-blue px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 sm:w-auto items-center">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            Télécharger
+                        </a>
+
+                        <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-white mr-auto"
                             id="modal-title">Visualisation du document</h3>
                     </div>
                     <div class="h-full w-full bg-gray-100 dark:bg-slate-900">
@@ -995,28 +889,32 @@
             `;
 
             document.getElementById('project-modal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden'; // Empêcher le scroll derrière
 
+            // Récupérer le README depuis GitHub (Raw content)
             try {
+                // Essayer la branche main, puis master si échec
                 let readmeUrl = `https://raw.githubusercontent.com/${githubUsername}/${repo.name}/${repo.default_branch}/README.md`;
                 const response = await fetch(readmeUrl);
 
                 if (response.ok) {
                     const text = await response.text();
+                    // Convertir Markdown en HTML via marked.js
                     modalDesc.innerHTML = marked.parse(text);
                 } else {
                     throw new Error("Readme introuvable");
                 }
             } catch (e) {
+                // Fallback sur la description courte si pas de README
                 modalDesc.innerHTML = `<p>${repo.description || "Aucune description détaillée disponible pour ce projet."}</p>`;
             }
         }
         function closeProjectModal() {
             document.getElementById('project-modal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = 'auto'; // Rétablir le scroll
         }
 
-
+        // SKELETON LOADERS HTML
         function getSkeletonHTML() {
             return `
             <div class="animate-pulse bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 rounded-xl p-6 h-full flex flex-col">
@@ -1029,7 +927,7 @@
             </div>`;
         }
 
-
+        // --- 0. DARK MODE TOGGLE ---
         var themeToggleBtn = document.getElementById('theme-toggle');
         var darkIcon = document.getElementById('theme-toggle-dark-icon');
         var lightIcon = document.getElementById('theme-toggle-light-icon');
@@ -1084,7 +982,11 @@
         function openPdf(pdfUrl) {
             const modal = document.getElementById('pdf-modal');
             const frame = document.getElementById('pdf-frame');
+            const downloadBtn = document.getElementById('modal-download-btn');
+            
             frame.src = pdfUrl;
+            downloadBtn.href = pdfUrl; // Mise à jour du lien de téléchargement
+
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
@@ -1130,11 +1032,13 @@
             });
         });
 
-        const githubUsername = 'GOLBIN-Dorian';
+        // --- 4. GITHUB API ---
+        const githubUsername = 'GOLBIN-Dorian'; // <-- REMPLACE ICI
         const container = document.getElementById('projects-container');
         const profileLink = document.getElementById('github-profile-link');
         profileLink.href = `https://github.com/${githubUsername}`;
 
+        // Injecter squelettes
         container.innerHTML = getSkeletonHTML().repeat(3);
 
         const getLanguageColor = (lang) => {
@@ -1152,7 +1056,7 @@
         fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&direction=desc`)
             .then(response => response.json())
             .then(data => {
-                container.innerHTML = '';
+                container.innerHTML = ''; // Enlever squelettes
                 if (data.message === "Not Found") return;
 
                 const myRepos = data.filter(repo => !repo.fork && repo.name !== 'GOLBIN-Dorian').slice(0, 5);
@@ -1161,7 +1065,7 @@
                 myRepos.forEach(repo => {
                     const card = document.createElement('div');
                     card.className = 'flex flex-col bg-white dark:bg-dark-card border border-slate-100 dark:border-slate-800 rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full cursor-pointer group';
-                    card.onclick = () => openProjectModal(repo);
+                    card.onclick = () => openProjectModal(repo); // Click ouvre la modale
 
                     const langClass = getLanguageColor(repo.language);
                     const langBadge = repo.language ? `<span class="${langClass} tech-badge">${repo.language}</span>` : '';
@@ -1185,8 +1089,9 @@
                 });
             });
 
-
+        // --- 5. GESTION DES FLUX RSS ---
         const feedContainer = document.getElementById('rss-feed-container');
+        // Injecter squelettes RSS
         feedContainer.innerHTML = `
             <div class="animate-pulse space-y-4">
                 <div class="h-16 bg-slate-100 dark:bg-slate-800 rounded-lg"></div>
