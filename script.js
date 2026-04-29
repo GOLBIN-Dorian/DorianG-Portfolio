@@ -1,4 +1,3 @@
-// TYPEWRITER EFFECT
 const textElement = document.getElementById("typewriter-text");
 const phrases = ["Logiciel", "Back-End PHP", "Front-End JS", "Fullstack"];
 let phraseIndex = 0;
@@ -44,7 +43,6 @@ async function openProjectModal(repo) {
     liveLink.classList.add("hidden");
   }
 
-  // Afficher le loader Skeleton dans la modale
   modalDesc.innerHTML = `
         <div class="animate-pulse space-y-3">
             <div class="h-4 bg-slate-200 dark:bg-slate-700 rounded w-3/4"></div>
@@ -55,33 +53,28 @@ async function openProjectModal(repo) {
     `;
 
   document.getElementById("project-modal").classList.remove("hidden");
-  document.body.style.overflow = "hidden"; // Empêcher le scroll derrière
+  document.body.style.overflow = "hidden";
 
-  // Récupérer le README depuis GitHub (Raw content)
   try {
-    // Essayer la branche main, puis master si échec
     let readmeUrl = `https://raw.githubusercontent.com/${githubUsername}/${repo.name}/${repo.default_branch}/README.md`;
     const response = await fetch(readmeUrl);
 
     if (response.ok) {
       const text = await response.text();
-      // Convertir Markdown en HTML via marked.js
       modalDesc.innerHTML = marked.parse(text);
     } else {
       throw new Error("Readme introuvable");
     }
   } catch (e) {
-    // Fallback sur la description courte si pas de README
     modalDesc.innerHTML = `<p>${repo.description || "Aucune description détaillée disponible pour ce projet."}</p>`;
   }
 }
 
 function closeProjectModal() {
   document.getElementById("project-modal").classList.add("hidden");
-  document.body.style.overflow = "auto"; // Rétablir le scroll
+  document.body.style.overflow = "auto";
 }
 
-// SKELETON LOADERS HTML
 function getSkeletonHTML() {
   return `
     <div class="animate-pulse bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-800 rounded-xl p-6 h-full flex flex-col">
@@ -94,7 +87,6 @@ function getSkeletonHTML() {
     </div>`;
 }
 
-// --- 0. DARK MODE TOGGLE ---
 var themeToggleBtn = document.getElementById("theme-toggle");
 var darkIcon = document.getElementById("theme-toggle-dark-icon");
 var lightIcon = document.getElementById("theme-toggle-light-icon");
@@ -132,7 +124,6 @@ themeToggleBtn.addEventListener("click", function () {
   }
 });
 
-// --- 1. MENU MOBILE (DRAWER) ---
 function toggleMenu() {
   const menu = document.getElementById("mobile-menu");
   const overlay = document.getElementById("mobile-overlay");
@@ -148,14 +139,13 @@ function toggleMenu() {
   }
 }
 
-// --- 2. GESTION DES PDFS ---
 function openPdf(pdfUrl) {
   const modal = document.getElementById("pdf-modal");
   const frame = document.getElementById("pdf-frame");
   const downloadBtn = document.getElementById("modal-download-btn");
 
   frame.src = pdfUrl;
-  downloadBtn.href = pdfUrl; // Mise à jour du lien de téléchargement
+  downloadBtn.href = pdfUrl;
 
   modal.classList.remove("hidden");
   document.body.style.overflow = "hidden";
@@ -169,7 +159,6 @@ function closePdf() {
   document.body.style.overflow = "auto";
 }
 
-// --- 3. SCROLL REVEAL & BACK TO TOP & SPY ---
 const revealElements = document.querySelectorAll(".reveal");
 const backToTopBtn = document.getElementById("back-to-top");
 const sections = document.querySelectorAll("section");
@@ -202,13 +191,11 @@ window.addEventListener("scroll", () => {
   });
 });
 
-// --- 4. GITHUB API ---
-const githubUsername = "GOLBIN-Dorian"; // <-- REMPLACE ICI
+const githubUsername = "GOLBIN-Dorian";
 const container = document.getElementById("projects-container");
 const profileLink = document.getElementById("github-profile-link");
 profileLink.href = `https://github.com/${githubUsername}`;
 
-// Injecter squelettes
 container.innerHTML = getSkeletonHTML().repeat(3);
 
 const getLanguageColor = (lang) => {
@@ -233,7 +220,7 @@ fetch(
 )
   .then((response) => response.json())
   .then((data) => {
-    container.innerHTML = ""; // Enlever squelettes
+    container.innerHTML = "";
     if (data.message === "Not Found") return;
 
     const myRepos = data
@@ -245,7 +232,7 @@ fetch(
       const card = document.createElement("div");
       card.className =
         "flex flex-col bg-white dark:bg-dark-card border border-slate-100 dark:border-slate-800 rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full cursor-pointer group";
-      card.onclick = () => openProjectModal(repo); // Click ouvre la modale
+      card.onclick = () => openProjectModal(repo);
 
       const langClass = getLanguageColor(repo.language);
       const langBadge = repo.language
@@ -271,9 +258,8 @@ fetch(
     });
   });
 
-// --- 5. GESTION DES FLUX RSS ---
 const feedContainer = document.getElementById("rss-feed-container");
-// Injecter squelettes RSS
+
 feedContainer.innerHTML = `
     <div class="animate-pulse space-y-4">
         <div class="h-16 bg-slate-100 dark:bg-slate-800 rounded-lg"></div>
