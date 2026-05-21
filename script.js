@@ -268,9 +268,10 @@ feedContainer.innerHTML = `
     </div>`;
 
 const rssUrls = [
-  "https://news.humancoders.com/feed",
-  "https://www.cert.ssi.gouv.fr/feed/",
-  "https://www.developpez.com/index/rss",
+  "https://www.lemondeinformatique.fr/flux-rss/general/rss.xml", // L'actu tech généraliste
+  "https://www.actuia.com/feed/", // Le focus 100% IA
+  "https://www.lebigdata.fr/feed", // IA, Data & Sécurité
+  "https://www.cert.ssi.gouv.fr/feed/", // Alertes sécurité
 ];
 
 const getRecentDate = (d) => {
@@ -333,13 +334,14 @@ async function loadRSS() {
 
     const itemsBySource = responses.map((data, index) => {
       let name = "Tech";
-      if (index === 0) name = "Human Coders";
-      if (index === 1) name = "CERT-FR";
-      if (index === 2) name = "Developpez.com";
+      if (index === 0) name = "Le Monde Informatique";
+      if (index === 1) name = "ActuIA";
+      if (index === 2) name = "LeBigData.fr";
+      if (index === 3) name = "CERT-FR";
+
       if (data && data.status === "ok" && data.items) hasRealData = true;
       return { name, items: data && data.items ? data.items : [] };
     });
-
     if (!hasRealData) throw new Error();
 
     let count = 0,
@@ -386,15 +388,27 @@ function renderFeed(items) {
       month: "short",
     });
     let color =
-      "bg-gray-100 text-gray-600 dark:bg-slate-700 dark:text-slate-300";
-    if (item.sourceName === "CERT-FR")
+      "bg-gray-100 text-gray-600 dark:bg-slate-700 dark:text-slate-300"; // Couleur par défaut
+
+    if (item.sourceName === "Le Monde Informatique") {
+      // Un style violet
+      color =
+        "bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400";
+    }
+    if (item.sourceName === "ActuIA") {
+      // Un style bleu/cyan brillant pour l'IA
+      color =
+        "bg-cyan-100 text-cyan-600 dark:bg-cyan-900/30 dark:text-cyan-400";
+    }
+    if (item.sourceName === "LeBigData.fr") {
+      // Un style orange/ambre pour la data
+      color =
+        "bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400";
+    }
+    if (item.sourceName === "CERT-FR") {
+      // Reste en rouge pour les alertes de sécurité
       color = "bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400";
-    if (item.sourceName === "Human Coders")
-      color =
-        "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400";
-    if (item.sourceName === "Developpez.com")
-      color =
-        "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400";
+    }
 
     feedContainer.innerHTML += `
             <a href="${item.link}" target="_blank" class="block p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 border border-transparent hover:border-slate-200 dark:hover:border-slate-600 transition group">
